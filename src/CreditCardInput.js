@@ -17,13 +17,14 @@ import { InjectedProps } from "./connectToState";
 
 const s = StyleSheet.create({
   container: {
-    alignItems: "center",
+    // alignItems: "center",
+    width: '100%',
   },
   form: {
     marginTop: 20,
   },
   inputContainer: {
-    marginLeft: 20,
+    marginLeft: 0,
   },
   inputLabel: {
     fontWeight: "bold",
@@ -56,8 +57,8 @@ export default class CreditCardInput extends Component {
     invalidColor: PropTypes.string,
     placeholderColor: PropTypes.string,
 
-    cardImageFront: PropTypes.number,
-    cardImageBack: PropTypes.number,
+    // cardImageFront: PropTypes.number,
+    // cardImageBack: PropTypes.number,
     cardScale: PropTypes.number,
     cardFontFamily: PropTypes.string,
     cardBrandIcons: PropTypes.object,
@@ -70,22 +71,24 @@ export default class CreditCardInput extends Component {
   static defaultProps = {
     cardViewSize: {},
     labels: {
-      name: "CARDHOLDER'S NAME",
+      // name: "CARDHOLDER'S NAME",
       number: "CARD NUMBER",
       expiry: "EXPIRY",
       cvc: "CVC/CCV",
-      postalCode: "POSTAL CODE",
+      // postalCode: "POSTAL CODE",
     },
     placeholders: {
-      name: "Full Name",
+      // name: "Full Name",
       number: "1234 5678 1234 5678",
       expiry: "MM/YY",
       cvc: "CVC",
-      postalCode: "34567",
+      // postalCode: "34567",
     },
     inputContainerStyle: {
       borderBottomWidth: 1,
-      borderBottomColor: "black",
+      borderBottomColor: "gray",
+      width: '100%',
+      marginTop: 15
     },
     validColor: "",
     invalidColor: "red",
@@ -149,40 +152,41 @@ export default class CreditCardInput extends Component {
 
     return (
       <View style={s.container}>
-        <CreditCard focused={focused}
+        {/* <CreditCard focused={focused}
           brand={type}
           scale={cardScale}
           fontFamily={cardFontFamily}
-          imageFront={cardImageFront}
-          imageBack={cardImageBack}
+          // imageFront={cardImageFront}
+          // imageBack={cardImageBack}
           customIcons={cardBrandIcons}
           name={requiresName ? name : " "}
           number={number}
           expiry={expiry}
-          cvc={cvc} />
+          cvc={cvc} /> */}
         <ScrollView ref="Form"
-          horizontal
+          horizontal={false}
           keyboardShouldPersistTaps="always"
           scrollEnabled={allowScroll}
           showsHorizontalScrollIndicator={false}
           style={s.form}>
           <CCInput {...this._inputProps("number")}
             keyboardType="numeric"
-            containerStyle={[s.inputContainer, inputContainerStyle, { width: CARD_NUMBER_INPUT_WIDTH }]} />
+            // containerStyle={[s.inputContainer, inputContainerStyle, { width: CARD_NUMBER_INPUT_WIDTH }]} />
+            containerStyle={[s.inputContainer, inputContainerStyle,]} />
           <CCInput {...this._inputProps("expiry")}
             keyboardType="numeric"
-            containerStyle={[s.inputContainer, inputContainerStyle, { width: EXPIRY_INPUT_WIDTH }]} />
-          { requiresCVC &&
+            containerStyle={[s.inputContainer, inputContainerStyle,]} />
+          {requiresCVC &&
             <CCInput {...this._inputProps("cvc")}
               keyboardType="numeric"
-              containerStyle={[s.inputContainer, inputContainerStyle, { width: CVC_INPUT_WIDTH }]} /> }
-          { requiresName &&
+              containerStyle={[s.inputContainer, inputContainerStyle,]} />}
+          {/* {requiresName &&
             <CCInput {...this._inputProps("name")}
-              containerStyle={[s.inputContainer, inputContainerStyle, { width: NAME_INPUT_WIDTH }]} /> }
-          { requiresPostalCode &&
+              containerStyle={[s.inputContainer, inputContainerStyle, { width: NAME_INPUT_WIDTH }]} />}
+          {requiresPostalCode &&
             <CCInput {...this._inputProps("postalCode")}
               keyboardType="numeric"
-              containerStyle={[s.inputContainer, inputContainerStyle, { width: POSTAL_CODE_INPUT_WIDTH }]} /> }
+              containerStyle={[s.inputContainer, inputContainerStyle, { width: POSTAL_CODE_INPUT_WIDTH }]} />} */}
         </ScrollView>
       </View>
     );

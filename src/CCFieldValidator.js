@@ -5,8 +5,8 @@ import every from "lodash.every";
 
 const toStatus = validation => {
   return validation.isValid ? "valid" :
-         validation.isPotentiallyValid ? "incomplete" :
-         "invalid";
+    validation.isPotentiallyValid ? "incomplete" :
+      "invalid";
 };
 
 const FALLBACK_CARD = { gaps: [4, 8, 12], lengths: [16], code: { size: 3 } };

@@ -152,7 +152,7 @@ export default class LiteCreditCardInput extends Component {
             keyboardType="numeric"
             containerStyle={s.numberInput} />
         </View>
-        <TouchableOpacity onPress={showRightPart ? this._focusNumber : this._focusExpiry }>
+        <TouchableOpacity onPress={showRightPart ? this._focusNumber : this._focusExpiry}>
           <Image style={s.icon} source={Icons[this._iconToShow()]} />
         </TouchableOpacity>
         <View style={[
@@ -164,7 +164,7 @@ export default class LiteCreditCardInput extends Component {
             <View pointerEvents={"none"}>
               <CCInput field="last4"
                 keyboardType="numeric"
-                value={ numberStatus === "valid" ? number.substr(number.length - 4, 4) : "" }
+                value={numberStatus === "valid" ? number.substr(number.length - 4, 4) : ""}
                 inputStyle={[s.input, inputStyle]}
                 containerStyle={[s.last4Input]} />
             </View>
