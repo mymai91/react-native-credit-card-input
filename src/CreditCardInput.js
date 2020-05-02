@@ -8,7 +8,7 @@ import ReactNative, {
   ScrollView,
   Dimensions,
   TextInput,
-  ViewPropTypes,
+  ViewPropTypes
 } from "react-native";
 
 import CreditCard from "./CardView";
@@ -169,24 +169,24 @@ export default class CreditCardInput extends Component {
           scrollEnabled={allowScroll}
           showsHorizontalScrollIndicator={false}
           style={s.form}>
-          <CCInput {...this._inputProps("number")}
-            keyboardType="numeric"
-            // containerStyle={[s.inputContainer, inputContainerStyle, { width: CARD_NUMBER_INPUT_WIDTH }]} />
-            containerStyle={[s.inputContainer, inputContainerStyle,]} />
-          <CCInput {...this._inputProps("expiry")}
-            keyboardType="numeric"
-            containerStyle={[s.inputContainer, inputContainerStyle,]} />
-          {requiresCVC &&
-            <CCInput {...this._inputProps("cvc")}
+          <View>
+            <CCInput {...this._inputProps("number")}
               keyboardType="numeric"
-              containerStyle={[s.inputContainer, inputContainerStyle,]} />}
-          {/* {requiresName &&
-            <CCInput {...this._inputProps("name")}
-              containerStyle={[s.inputContainer, inputContainerStyle, { width: NAME_INPUT_WIDTH }]} />}
-          {requiresPostalCode &&
-            <CCInput {...this._inputProps("postalCode")}
-              keyboardType="numeric"
-              containerStyle={[s.inputContainer, inputContainerStyle, { width: POSTAL_CODE_INPUT_WIDTH }]} />} */}
+              containerStyle={[s.inputContainer, inputContainerStyle,]} />
+          </View>
+          <View style={{ flex: 1, flexDirection: 'row' }}>
+            <View style={{ flex: 1 }}>
+              <CCInput {...this._inputProps("expiry")}
+                keyboardType="numeric"
+              />
+            </View>
+            <View style={{ flex: 1 }}>
+              {requiresCVC &&
+                <CCInput {...this._inputProps("cvc")}
+                  keyboardType="numeric"
+                />}
+            </View>
+          </View>
         </ScrollView>
       </View>
     );
