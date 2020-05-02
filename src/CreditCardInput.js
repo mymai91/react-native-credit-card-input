@@ -178,12 +178,14 @@ export default class CreditCardInput extends Component {
             <View style={{ flex: 1 }}>
               <CCInput {...this._inputProps("expiry")}
                 keyboardType="numeric"
+                containerStyle={[s.inputContainer, inputContainerStyle, { marginRight: 10 }]}
               />
             </View>
             <View style={{ flex: 1 }}>
               {requiresCVC &&
                 <CCInput {...this._inputProps("cvc")}
                   keyboardType="numeric"
+                  containerStyle={[s.inputContainer, inputContainerStyle, { marginLeft: 10 }]}
                 />}
             </View>
           </View>
